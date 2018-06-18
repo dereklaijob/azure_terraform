@@ -121,19 +121,6 @@ resource "azurerm_virtual_machine" "dlterraformvm" {
         version   = "latest"
     }
 
-    os_profile {
-        computer_name  = "dlvm"
-        admin_username = "azureuser"
-    }
-
-    os_profile_linux_config {
-        disable_password_authentication = true
-        ssh_keys {
-            path     = "/home/azureuser/.ssh/authorized_keys"
-            key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3lVfsFx2Tzb4alNMqe8HHyBnjTAaU5DvWO7XO0DqPJndaIdsm6bcpXl5r2FCXIUA/ERw9s5j8xebO4gxEjqwaXEMNJjjB/YRlJpEU6YOBMLaIHBf5F5dzK0WHy/gYl+uVQk6eepIUh/X/L34hKt5gjCzXP4dNtMw03Zg9kdSb1AHBfo8UU0HXwNTbeBO6EBEp54vnpeFvnJV8bnplDZAUtInxWiz2jVVaHc7uD3n5xP/HLlACcbmAF+7fV3Fi7liGZDowOwjS3vXIFGC4v0nhpQSKCWPdqLS+Wmtab0EvSRKuayWadcQmzsNJWgj7bx/84jtTV2pdzgdZKXM8r13D ons"
-        }
-    }
-
     boot_diagnostics {
         enabled = "true"
         storage_uri = "${azurerm_storage_account.dlstorageaccount.primary_blob_endpoint}"
